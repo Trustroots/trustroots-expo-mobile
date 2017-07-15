@@ -1,0 +1,23 @@
+{
+  "expo": {
+    "name": "trustroots-notification-app",
+    "description": "Trustroots notification app",
+    "slug": "trustroots-notification-app",
+    "privacy": "public",
+    "sdkVersion": "18.0.0",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "primaryColor": "#cccccc",
+    "icon": "./assets/icons/app.png",
+    "loading": {
+      "icon": "./assets/icons/loading.png",
+      "hideExponentText": true
+    },
+    "packagerOpts": {
+      "assetExts": ["ttf", "mp4"]
+    },
+    "ios": {
+      "supportsTablet": true
+    }
+  }
+}
