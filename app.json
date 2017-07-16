@@ -16,6 +16,10 @@
     "packagerOpts": {
       "assetExts": ["ttf", "mp4"]
     },
+    "android": {
+      "package": "org.trustroots.notificationApp",
+      "icon": "./assets/icons/logo_512.png"
+    },
     "ios": {
       "supportsTablet": true
     }

@@ -1,34 +1,20 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Text, WebView  } from 'react-native';
 import { Permissions, Notifications } from 'expo';
+import { registerDeviceToExpo, registerExpoTokenToTrustroots } from './NotificationHelpers'
+import * as Settings from './Settings'
+console.log("settings", Settings)
 
-async function registerForPushNotificationsAsync() {
-  const { existingStatus } = await Permissions.getAsync(
-    Permissions.REMOTE_NOTIFICATIONS
-  );
-  let finalStatus = existingStatus;
-  if (existingStatus !== 'granted') {
-    const { status } = await Permissions.askAsync(
-      Permissions.REMOTE_NOTIFICATIONS
-    );
-    finalStatus = status;
-  }
-
-  if (finalStatus !== 'granted') {
-    return;
-  }
-  return await Notifications.getExponentPushTokenAsync();
-}
-
+// App wraps trustroots web site and handles notifications.
+// Application tries to automaticatically register 
+// notifications as you load it first time.
 export default class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { url: 'https://trustroots.org' };
-    this._subscribeNotifications();
+    this.state = { url: Settings.BASE_URL };
   }
 
   componentWillMount() {
-    registerForPushNotificationsAsync();
     this._notificationSubscription = Notifications.addListener(
       this._handleNotification
     );
@@ -40,30 +26,32 @@ export default class App extends Component {
     }
   };
 
-  async _subscribeNotifications() {
-    var token = await registerForPushNotificationsAsync();
-    console.log(token);
-    // register token to the user.
-    // call register notification endpoint
+  async _registerNotifications() {
+    var token = await registerDeviceToExpo();
+    await registerExpoTokenToTrustroots(token);    
   }
-  
+
   _handleMessage = (msg) => {
     var userId = msg.nativeEvent.data;
     if(userId) {
-        registerForPushNotificationsAsync();
+       this. _registerNotifications();
     }
   }
   
   _handleLoadEnd = (msg) => {
     // This is needed because we want to subscribe notifications only if user is authenticated
-    this.refs['viewer'].injectJavaScript("window.isMobileApp=true; window.postMessage(window.user && window.user._id);")
+    this.webView
+      .injectJavaScript(
+        "window.isMobileApp=true;" +
+        "window.postMessage(window.user && window.user._id);"
+      )
   }
   
   render() {
     return (
       <View style={{ flex: 1 }}>
         <WebView 
-          ref="viewer"
+          ref={(o) => this.webView = o}
           source={{ uri: this.state.url }} 
           style={{ marginTop: 20 }} 
           onMessage={this._handleMessage} 
