@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "trustroots-notification-app",
-    "description": "Trustroots notification app",
-    "slug": "trustroots-notification-app",
+    "name": "trustroots-app",
+    "description": "Travellers community for sharing, hosting and getting people together.",
+    "slug": "trustroots-app",
     "privacy": "public",
     "sdkVersion": "18.0.0",
     "version": "0.1.0",
@@ -17,11 +17,12 @@
       "assetExts": ["ttf", "mp4"]
     },
     "android": {
-      "package": "org.trustroots.notificationApp",
+      "package": "org.trustroots.trustrootsApp",
       "icon": "./assets/icons/logo_512.png"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "org.trustroots.trustrootsApp"
     }
   }
 }

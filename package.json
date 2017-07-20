@@ -1,7 +1,7 @@
 {
-  "name": "trustroots-notification-app",
-  "version": "0.0.0",
-  "description": "Hello Expo!",
+  "name": "trustroots-app",
+  "version": "0.1.0",
+  "description": "Travellers community for sharing, hosting and getting people together.",
   "author": null,
   "private": true,
   "main": "node_modules/expo/AppEntry.js",
