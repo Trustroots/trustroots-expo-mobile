@@ -1,9 +1,9 @@
 {
   "expo": {
-    "name": "trustroots-app",
+    "name": "Trustroots",
     "version": "0.1.0",
     "description": "Travellers community for sharing, hosting and getting people together.",
-    "slug": "trustroots-app",
+    "slug": "trustroots",
     "scheme": "trustroots",
     "privacy": "public",
     "sdkVersion": "18.0.0",

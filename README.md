@@ -2,6 +2,8 @@
 
 Trustroots.org mobile app built with Expo.io
 
+The app merely wraps Trustroots.org site in a `WebView` component.
+
 Getting started
 ---------------
 
