@@ -3,9 +3,7 @@ import { View, StyleSheet, Text, WebView  } from 'react-native';
 import { Permissions, Notifications } from 'expo';
 import { registerDeviceToExpo, registerExpoTokenToTrustroots } from './NotificationHelpers'
 import * as Settings from './Settings'
-import * as Package from './package.json'
 console.log("settings", Settings)
-console.log("package", Package)
 
 // App wraps trustroots web site and handles notifications.
 // Application tries to automaticatically register
@@ -41,11 +39,22 @@ export default class App extends Component {
   }
 
   _handleLoadEnd = (msg) => {
+
+    // See Expo constants
+    // https://docs.expo.io/versions/v18.0.0/sdk/constants.html
+    var version = Expo.Constants.manifest.version || '0.0.0';
+    var platform = Expo.Constants.platform || '';
+    var deviceName = Expo.Constants.deviceName || '';
+    var deviceYearClass = Expo.Constants.deviceYearClass || '';
+
     // This is needed because we want to subscribe notifications only if user is authenticated
     this.webView
       .injectJavaScript(
         "window.isMobileApp=true;" +
-        "window.mobileVersion='" + (Package.version || '0.0.0') + "';" +
+        "window.mobileVersion='" + version + "';" +
+        "window.mobilePlatform='" + platform + "';" +
+        "window.mobileDeviceName='" + deviceName + "';" +
+        "window.mobileDeviceYearClass='" + deviceYearClass + "';" +
         "window.postMessage(window.user && window.user._id);"
       )
   }
