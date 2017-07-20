@@ -1,28 +1,41 @@
 {
   "expo": {
     "name": "trustroots-app",
+    "version": "0.1.0",
     "description": "Travellers community for sharing, hosting and getting people together.",
     "slug": "trustroots-app",
+    "scheme": "trustroots",
     "privacy": "public",
     "sdkVersion": "18.0.0",
-    "version": "0.1.0",
     "orientation": "portrait",
-    "primaryColor": "#cccccc",
-    "icon": "./assets/icons/app.png",
+    "primaryColor": "#12b591",
+    "icon": "./assets/icon_app.png",
     "loading": {
-      "icon": "./assets/icons/loading.png",
+      "icon": "./assets/loading.png",
+      "backgroundColor": "#12b591",
       "hideExponentText": true
+    },
+    "notification": {
+      "icon": "./assets/icon_push.png",
+      "color": "#12b591",
+      "androidMode": "default"
     },
     "packagerOpts": {
       "assetExts": ["ttf", "mp4"]
     },
+    "androidStatusBarColor": "#fff",
+    "androidStatusBar": {
+      "barStyle": "light-content",
+      "backgroundColor": "#12b591"
+    },
     "android": {
       "package": "org.trustroots.trustrootsApp",
-      "icon": "./assets/icons/logo_512.png"
+      "icon": "./assets/icons-android/logo_512.png"
     },
     "ios": {
+      "bundleIdentifier": "org.trustroots.trustrootsApp",
       "supportsTablet": true,
-      "bundleIdentifier": "org.trustroots.trustrootsApp"
+      "icon": "./assets/icons-ios/icon-1024.png"
     }
   }
 }
