@@ -1,6 +1,6 @@
-# Trustroots Expo.io Mobile App
+# Trustroots Mobile App
 
-Trustroots.org mobile app built with Expo.io
+Trustroots.org mobile app built with [Expo.io](https://expo.io)
 
 The app merely wraps Trustroots.org site in a `WebView` component.
 
@@ -16,17 +16,17 @@ Getting started
 1. Run `npm install` in project directory
 
 #### If you use Expo XDE and develop against physical phone:
-1. Get an expo account. You register from Expo web site or by using command line utility.
-1. Install Expo XDE to your development machine
-2. Install Expo App to your mobile phone
+1. [Get an Expo account](https://expo.io/signup). You register from Expo web site or by using command line utility.
+1. Install [Expo XDE](https://expo.io/tools) to your development machine (supports Windows/OSX/Linux).
+2. Install Expo App to your mobile phone ([Android](https://play.google.com/store/apps/details?id=host.exp.exponent), [iOS](https://itunes.apple.com/app/apple-store/id982107779) or download APK [via tools page](https://expo.io/tools)).
 3. Open App in Expo XDE. It should start compiling it.
 4. Connect your mobile phone to development server. In XDE there is share button when you click it you should see QR code you can scan with Expo App. Command line utility prints QR code to console.
 
 #### If you use `exp` commandline utility and develop against physical phone:
-1. Get an expo account. You register from Expo web site or by using command line utility.
+1. [Get an Expo account](https://expo.io/signup). You register from Expo web site or by using command line utility.
 1. Install exp `npm install -g exp`
-1. in project directory `exp start --tunnel --android` (you may also use --lan if you development machine and mobile phone are in same network)  
-1. Install Expo App to your mobile phone
+1. In project directory `exp start --tunnel --android` (you may also use --lan if you development machine and mobile phone are in same network)  
+1. Install Expo App to your mobile phone ([Android](https://play.google.com/store/apps/details?id=host.exp.exponent), [iOS](https://itunes.apple.com/app/apple-store/id982107779) or download APK [via tools page](https://expo.io/tools)).
 1. Open mobile app and scan QR code
 
 #### Running in emulator
