@@ -3,7 +3,8 @@ import { View, StyleSheet, Text, WebView  } from 'react-native';
 import { Permissions, Notifications } from 'expo';
 import { registerDeviceToExpo, registerExpoTokenToTrustroots } from './NotificationHelpers'
 import * as Settings from './Settings'
-console.log("settings", Settings)
+
+console.log('settings', Settings)
 
 // App wraps trustroots web site and handles notifications.
 // Application tries to automaticatically register
@@ -33,8 +34,8 @@ export default class App extends Component {
 
   _handleMessage = (msg) => {
     var userId = msg.nativeEvent.data;
-    if(userId) {
-       this. _registerNotifications();
+    if (userId) {
+      this. _registerNotifications();
     }
   }
 
