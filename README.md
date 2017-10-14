@@ -14,6 +14,7 @@ Getting started
 #### Before you start:
 1. You need NPM and Node. Install them. Currently it's recommended to use NPM v3 or v4, because there are still some defects in NPM v5.
 1. Run `npm install` in project directory
+1. Create settings file: `cp Settings-example.js Settings.js` (and modify contents if needed)
 
 #### Running the app on physical phone
 
