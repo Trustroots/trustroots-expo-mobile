@@ -18,7 +18,7 @@ export async function registerDeviceToExpo() {
   if (finalStatus !== 'granted') {
     return;
   }
-  return await Notifications.getExponentPushTokenAsync();
+  return await Notifications.getExpoPushTokenAsync();
 }
 
 /// Register Expo token to Trustroots notifiction service

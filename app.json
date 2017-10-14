@@ -6,7 +6,7 @@
     "slug": "trustroots",
     "scheme": "trustroots",
     "privacy": "public",
-    "sdkVersion": "18.0.0",
+    "sdkVersion": "21.0.0",
     "orientation": "portrait",
     "primaryColor": "#12b591",
     "icon": "./assets/icon_app.png",
