@@ -23,7 +23,7 @@
     "packagerOpts": {
       "assetExts": ["ttf", "mp4"]
     },
-    "androidStatusBarColor": "#fff",
+    "androidStatusBarColor": "#12b591",
     "androidStatusBar": {
       "barStyle": "light-content",
       "backgroundColor": "#12b591"
