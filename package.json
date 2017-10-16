@@ -9,10 +9,18 @@
   },
   "private": true,
   "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "lint": "eslint *.js"
+  },
   "dependencies": {
     "expo": "^21.0.0",
     "react": "16.0.0-alpha.12",
     "react-native": "https://github.com/expo/react-native/archive/sdk-21.0.2.tar.gz"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "~4.9.0",
+    "eslint-config-expo": "~6.0.0",
+    "prettier": "~1.7.4"
+  }
 }

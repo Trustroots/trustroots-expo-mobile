@@ -50,5 +50,11 @@ To load your local version:
 
 _Note that if you want to use https or different port, you need to configure those from Trustroots's [configuration files](https://github.com/Trustroots/trustroots/tree/master/config/env)._
 
+## Writing code
+
+Lint your code using `npm run lint`
+
+You can see exact validation rules from [expo:eslint-config-universe](https://github.com/expo/eslint-config-universe/tree/master/shared).
+
 ## License
 MIT
