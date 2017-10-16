@@ -30,7 +30,8 @@
     },
     "android": {
       "package": "org.trustroots.trustrootsApp",
-      "icon": "./assets/icons-android/logo_512.png"
+      "icon": "./assets/icons-android/logo_512.png",
+      "permissions": []
     },
     "ios": {
       "bundleIdentifier": "org.trustroots.trustrootsApp",
