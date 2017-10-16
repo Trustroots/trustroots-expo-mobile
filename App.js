@@ -45,6 +45,7 @@ const appInfo = {
 // True when during this app runtime notifications are enabled already,
 // so that we don't attempt to enable them again.
 let notificationsRegistered = false;
+let notificationsRegisteringLoading = false;
 
 // JS injected to `WebView`
 // Embedded website will change its functionality based on this.
@@ -75,28 +76,35 @@ export default class App extends React.Component {
   async _registerNotifications() {
     console.log('registerNotifications');
     // Do not register multiple times during the app runtime
-    if (notificationsRegistered) {
+    if (notificationsRegistered || notificationsRegisteringLoading) {
       return;
     }
+
+    notificationsRegisteringLoading = true;
 
     var token = await registerDeviceToExpo();
 
     await registerExpoTokenToTrustroots(token)
       .then(() => {
+        notificationsRegisteringLoading = false;
         notificationsRegistered = true;
       })
       .catch(() => {
+        notificationsRegisteringLoading = false;
         notificationsRegistered = false;
       });
   }
 
   async _unRegisterNotifications() {
     console.log('unRegisterNotifications');
+    notificationsRegisteringLoading = true;
     await unRegisterExpoTokenFromTrustroots()
       .then(() => {
+        notificationsRegisteringLoading = false;
         notificationsRegistered = false;
       })
       .catch(() => {
+        notificationsRegisteringLoading = false;
         notificationsRegistered = true;
       });
   }
