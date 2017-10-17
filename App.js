@@ -160,10 +160,10 @@ export default class App extends React.Component {
         {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
         {Platform.OS === 'android' && <View style={styles.statusBarUnderlay} />}
         <WebView
+          domStorageEnabled
           ref={o => (this.webView = o)}
           source={{ uri: this.state.url }}
           style={styles.webview}
-          domStorageEnabled={true}
           injectedJavaScript={appInfoJavaScript}
           onMessage={this._handleMessage}
           onError={this._handleError}
