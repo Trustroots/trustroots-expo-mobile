@@ -163,6 +163,7 @@ export default class App extends React.Component {
           ref={o => (this.webView = o)}
           source={{ uri: this.state.url }}
           style={styles.webview}
+          domStorageEnabled={true}
           injectedJavaScript={appInfoJavaScript}
           onMessage={this._handleMessage}
           onError={this._handleError}
