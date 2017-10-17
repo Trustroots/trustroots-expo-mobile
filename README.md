@@ -54,9 +54,14 @@ _Note that if you want to use https or different port, you need to configure tho
 
 ## Writing code
 
-Lint your code using `npm run lint`
+Lint your code using `npm run lint` (or `npm test`).
 
-You can see exact validation rules from [expo:eslint-config-universe](https://github.com/expo/eslint-config-universe/tree/master/shared).
+You can see exact validation rules from [expo:eslint-config-universe](https://github.com/expo/eslint-config-universe/tree/master/shared), or just try to follow surrounding code. You could also install [Eslint integration](https://eslint.org/docs/user-guide/integrations) in your editor. See also [Editorconfig](http://editorconfig.org/) for your editor.
+
+## Debugging
+
+- Read [Debugging React Native](https://facebook.github.io/react-native/docs/debugging.html)
+- Check out [React devtools](https://github.com/facebook/react-devtools)
 
 ## License
 MIT
