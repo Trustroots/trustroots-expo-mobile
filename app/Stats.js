@@ -13,7 +13,7 @@ function _handleUpdateNeeded(msg) {
         style: 'cancel',
       },
       {
-        text: 'Open in Play Store',
+        text: 'Update (Play Store)',
         onPress: () => {
           const appStoreUrl =
             'https://play.google.com/store/apps/details?id=org.trustroots.trustrootsApp';
