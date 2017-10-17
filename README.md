@@ -36,9 +36,11 @@ You have two options for deploying, graphical or command line. Expo XDE might be
 ### Running in emulator
 If you prefer emulator instead of using physical phone check out [instructions form Expo site](https://docs.expo.io/versions/introduction/installation.html).
 
+Note that emulator cannot process push notifications.
+
 ### Running local development version of the site inside the app
 
-By default app is configured to load site from `https://www.trustroots.org` in the WebView, but you can change this to load your local version.
+By default app is configured to load site from `https://www.trustroots.org` in the [WebView](https://facebook.github.io/react-native/docs/webview.html), but you can change this to load your local version.
 
 Before you start, [install and run Trustroots](https://github.com/trustroots/trustroots) on your local machine.
 
