@@ -42,16 +42,16 @@ export async function sendStat(stats, collection) {
     return;
   }
 
-  // Required parameter
-  stats.collection = String(collection);
-
   await fetch(Settings.API_ENDPOINT + 'statistics', {
     method: 'POST',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(stats),
+    body: JSON.stringify({
+      collection: String(collection),
+      stats,
+    }),
   }).then(response => {
     // If stats API responds "needs update" headers,
     // tell user to update the app.
