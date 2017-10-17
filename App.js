@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, Platform, StatusBar, View, StyleSheet, WebView } from 'react-native';
+import { Alert, BackHandler, Platform, StatusBar, View, StyleSheet, WebView } from 'react-native';
 import { Constants, Notifications } from 'expo';
 import {
   registerDeviceToExpo,
@@ -63,9 +63,19 @@ export default class App extends React.Component {
   componentWillMount() {
     this._notificationSubscription = Notifications.addListener(this._handleNotification);
 
+    BackHandler.addEventListener('hardwareBackPress', this._handleHardwareBackPress);
+
     // Send platform stats
     sendStat(appInfo, 'mobileAppInit');
   }
+
+  _handleHardwareBackPress = () => {
+    this.webView.goBack();
+
+    // Prevent the regular handling of the back button.
+    // Otherwise we'd just exit the app.
+    return true;
+  };
 
   _handleNotification = notification => {
     if (notification.origin === 'selected') {
