@@ -1,3 +1,7 @@
 {
-  "extends": "expo/native"
+  "extends": "expo/native",
+  "globals": {
+    "clearInterval": true,
+    "setInterval": true
+  }
 }
