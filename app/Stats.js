@@ -1,44 +1,17 @@
-import { Alert, Linking } from 'react-native';
 import * as Settings from '../Settings';
-
-function _handleUpdateNeeded(msg) {
-  // Works on both iOS and Android
-  Alert.alert(
-    'App needs an update',
-    msg || 'You should update Trustroots app or otherwise it will not continue functioning.',
-    [
-      {
-        text: 'Ask me later',
-        onPress: () => console.log('Update: ask me later pressed'),
-        style: 'cancel',
-      },
-      {
-        text: 'Update (Play Store)',
-        onPress: () => {
-          const appStoreUrl =
-            'https://play.google.com/store/apps/details?id=org.trustroots.trustrootsApp';
-
-          Linking.openURL(appStoreUrl).catch(err => {
-            console.error('Opening Play Store URL failed: ', err);
-          });
-        },
-      },
-    ],
-    { cancelable: false }
-  );
-}
+import { handleAppUpdateResponse } from './AppUpdate';
 
 /**
  * Sends statistics via API
  *
- * @param {Object} stats Statistics object.
  * @param {String} collection Required collection name.
+ * @param {Object} stats Statistics object.
  */
-export async function sendStat(stats, collection) {
+export async function sendStat(collection, stats) {
   console.log('sendStat');
 
-  if (!stats || !collection) {
-    console.error('sendStat: Missing arguments');
+  if (!collection || !stats) {
+    console.error('sendStat: Missing arguments `collection` or `stats`');
     return;
   }
 
@@ -55,9 +28,6 @@ export async function sendStat(stats, collection) {
   }).then(response => {
     // If stats API responds "needs update" headers,
     // tell user to update the app.
-    if (response.headers.map['x-tr-update-needed']) {
-      let msg = response.headers.map['x-tr-update-needed'][0];
-      _handleUpdateNeeded(msg);
-    }
+    handleAppUpdateResponse(response);
   });
 }
