@@ -2,7 +2,7 @@
 
 You can check [Play store listing](https://play.google.com/store/apps/details?id=org.trustroots.trustrootsApp) for the change log as well.
 
-#### Next
+#### 1.0.0 (19 October 2017)
 - Our first beta version had bugs, we know! This release fixes many of them but especially those annoying ones around push notifications. Yay!
 - Pressing phone's hardware back button will now go back in history, instead of closing the app. That was a tad bit too brutal behaviour... sorry.
 - This and future versions will prompt user to update the app if Trustroots API commands the app to do so. Just, keep it up to date, will ya? :-)
