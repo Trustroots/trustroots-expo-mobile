@@ -1,3 +1,11 @@
+/**
+ * Trustoots Mobile app
+ *
+ * App wraps Trustroots.org web site and handles push notifications.
+ *
+ * @link https://github.com/Trustroots/trustroots-expo-mobile
+ */
+
 import React from 'react';
 import {
   Alert,
@@ -21,6 +29,9 @@ import * as Settings from './Settings';
 console.log('Trustroots mobile app');
 console.log('Settings: ', Settings);
 
+/**
+ * Common component styles
+ */
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -60,9 +71,9 @@ let notificationsRegisteringLoading = false;
 // Embedded website will change its functionality based on this.
 const appInfoJavaScript = 'window.trMobileApp=' + JSON.stringify(appInfo) + ';';
 
-// App wraps trustroots web site and handles notifications.
-// Application tries to automaticatically register
-// notifications as you load it first time.
+/**
+ * App's main (and only!) component
+ */
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -70,8 +81,10 @@ export default class App extends React.Component {
   }
 
   componentWillMount() {
+    // Subscribe to push notifications
     this._notificationSubscription = Notifications.addListener(this._handleNotification);
 
+    // Handle hardware back button
     BackHandler.addEventListener('hardwareBackPress', this._handleHardwareBackPress);
 
     // Send anonymous platform stats via API
@@ -141,7 +154,7 @@ export default class App extends React.Component {
   };
 
   /**
-   * Register push notifications token
+   * Register push notifications token with API
    */
   async _registerNotifications() {
     console.log('registerNotifications');
@@ -169,7 +182,7 @@ export default class App extends React.Component {
   }
 
   /**
-   * Unregister push notifications token
+   * Unregister push notifications token with API
    */
   async _unRegisterNotifications() {
     console.log('unRegisterNotifications');
