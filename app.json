@@ -6,7 +6,7 @@
     "slug": "trustroots",
     "scheme": "trustroots",
     "privacy": "public",
-    "sdkVersion": "21.0.0",
+    "sdkVersion": "22.0.0",
     "orientation": "portrait",
     "primaryColor": "#12b591",
     "icon": "./assets/icon_app.png",
@@ -14,6 +14,11 @@
       "icon": "./assets/loading.png",
       "backgroundColor": "#12b591",
       "hideExponentText": true
+    },
+    "splash": {
+      "backgroundColor": "#12b591",
+      "image": "./assets/splash.png",
+      "resizeMode": "contain"
     },
     "notification": {
       "icon": "./assets/icon_push.png",
