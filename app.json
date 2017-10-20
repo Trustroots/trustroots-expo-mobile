@@ -33,6 +33,7 @@
       "backgroundColor": "#000000"
     },
     "android": {
+      "versionCode": 2,
       "package": "org.trustroots.trustrootsApp",
       "icon": "./assets/icon_app.png",
       "permissions": []
