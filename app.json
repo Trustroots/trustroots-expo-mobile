@@ -34,13 +34,13 @@
     },
     "android": {
       "package": "org.trustroots.trustrootsApp",
-      "icon": "./assets/icons-android/logo_512.png",
+      "icon": "./assets/icon_app.png",
       "permissions": []
     },
     "ios": {
       "bundleIdentifier": "org.trustroots.trustrootsApp",
       "supportsTablet": true,
-      "icon": "./assets/icons-ios/icon-1024.png"
+      "icon": "./assets/icon_app.png"
     }
   }
 }
