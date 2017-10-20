@@ -32,16 +32,17 @@ console.log('Settings: ', Settings);
 /**
  * Common component styles
  */
+const statusBarHeight = parseInt(Constants.statusBarHeight || 20, 10);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#12b591',
   },
-  statusBarUnderlay: {
-    height: Constants.statusBarHeight || 24,
-    backgroundColor: 'rgba(0, 0, 0, 0.2)',
+  statusBar: {
+    backgroundColor: '#000000',
   },
   webView: {
-    marginTop: Constants.statusBarHeight || 20,
+    marginTop: statusBarHeight,
   },
 });
 
@@ -299,13 +300,12 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-        {Platform.OS === 'android' && <View style={styles.statusBarUnderlay} />}
+        <StatusBar barStyle="default" backgroundColor={styles.statusBar.backgroundColor} />
         <WebView
           domStorageEnabled
           ref={o => (this.webView = o)}
           source={{ uri: this.state.url }}
-          style={styles.webview}
+          style={styles.webView}
           injectedJavaScript={appInfoJavaScript}
           onMessage={this._handleMessage}
           onError={this._handleError}

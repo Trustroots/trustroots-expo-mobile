@@ -23,10 +23,9 @@
     "packagerOpts": {
       "assetExts": ["ttf", "mp4"]
     },
-    "androidStatusBarColor": "#12b591",
     "androidStatusBar": {
       "barStyle": "light-content",
-      "backgroundColor": "#12b591"
+      "backgroundColor": "#000000"
     },
     "android": {
       "package": "org.trustroots.trustrootsApp",
