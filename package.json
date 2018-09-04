@@ -1,6 +1,6 @@
 {
   "name": "trustroots-app",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Travellers community for sharing, hosting and getting people together.",
   "author": "https://www.trustroots.org/foundation",
   "repository": {
@@ -14,9 +14,9 @@
     "lint": "eslint *.js app"
   },
   "dependencies": {
-    "expo": "^27.0.0",
+    "expo": "^28.0.0",
     "react": "16.3.1",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-27.0.0.tar.gz"
+    "react-native": "https://github.com/expo/react-native/archive/sdk-28.0.0.tar.gz"
   },
   "license": "MIT",
   "devDependencies": {
