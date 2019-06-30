@@ -1,5 +1,6 @@
-import { Constants, Permissions, Notifications } from 'expo';
+import { Permissions, Notifications } from 'expo';
 import * as Settings from '../Settings';
+import Constants from 'expo-constants';
 
 /**
  * Registers device to Expo IO Push notifiction service.

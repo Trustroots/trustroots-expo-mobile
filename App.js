@@ -13,11 +13,12 @@ import {
   Linking,
   Platform,
   StatusBar,
-  View,
   StyleSheet,
+  View,
   WebView,
 } from 'react-native';
-import { Constants, Notifications } from 'expo';
+import Constants from 'expo-constants';
+import { Notifications } from 'expo';
 import {
   registerDeviceToExpo,
   registerExpoTokenToTrustroots,
@@ -26,13 +27,9 @@ import {
 import { sendStat } from './app/Stats';
 import * as Settings from './Settings';
 
-console.log('Trustroots mobile app');
-console.log('Settings: ', Settings);
-
 /**
  * Common component styles
  */
-const statusBarHeight = parseInt(Constants.statusBarHeight || 20, 10);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -40,9 +37,6 @@ const styles = StyleSheet.create({
   },
   statusBar: {
     backgroundColor: '#000000',
-  },
-  webView: {
-    marginTop: statusBarHeight,
   },
 });
 
@@ -300,12 +294,11 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <StatusBar barStyle="default" backgroundColor={styles.statusBar.backgroundColor} />
+        <StatusBar backgroundColor={styles.statusBar.backgroundColor} barStyle="default" />
         <WebView
           domStorageEnabled
           ref={o => (this.webView = o)}
           source={{ uri: this.state.url }}
-          style={styles.webView}
           injectedJavaScript={appInfoJavaScript}
           onMessage={this._handleMessage}
           onError={this._handleError}
