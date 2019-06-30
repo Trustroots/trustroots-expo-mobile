@@ -2,7 +2,7 @@
 
 You can check [Play store listing](https://play.google.com/store/apps/details?id=org.trustroots.trustrootsApp) for the change log as well.
 
-#### 1.1.0 (NEXT)
+#### 1.1.0 (30 June 2019)
 - Updated platform used to build the app; no visible changes
 
 #### 1.0.0 (19 October 2017)
