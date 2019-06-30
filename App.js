@@ -72,7 +72,7 @@ const appInfoJavaScript = 'window.trMobileApp=' + JSON.stringify(appInfo) + ';';
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { url: Settings.BASE_URL };
+    this.state = { url: `${Settings.BASE_URL}/?app` };
   }
 
   componentWillMount() {
