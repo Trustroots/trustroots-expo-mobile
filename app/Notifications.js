@@ -1,6 +1,9 @@
+// External dependencies
 import { Permissions, Notifications } from 'expo';
-import * as Settings from '../Settings';
 import Constants from 'expo-constants';
+
+// Local dependencies
+import * as Settings from '../Settings';
 
 /**
  * Registers device to Expo IO Push notifiction service.

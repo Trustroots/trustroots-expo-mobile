@@ -1,3 +1,4 @@
+// External dependencies
 import { Alert, Linking } from 'react-native';
 import Constants from 'expo-constants';
 

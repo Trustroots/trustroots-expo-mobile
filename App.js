@@ -6,6 +6,7 @@
  * @link https://github.com/Trustroots/trustroots-expo-mobile
  */
 
+// External dependencies
 import React from 'react';
 import {
   Alert,
@@ -19,6 +20,8 @@ import {
 } from 'react-native';
 import Constants from 'expo-constants';
 import { Notifications } from 'expo';
+
+// Local dependencies
 import {
   registerDeviceToExpo,
   registerExpoTokenToTrustroots,
