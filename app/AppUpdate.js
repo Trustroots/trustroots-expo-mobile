@@ -1,5 +1,6 @@
+// External dependencies
 import { Alert, Linking } from 'react-native';
-import { Constants } from 'expo';
+import Constants from 'expo-constants';
 
 /**
  * Checks if Response object has `x-tr-update-needed` header and if so,

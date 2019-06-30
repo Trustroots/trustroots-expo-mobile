@@ -4,22 +4,22 @@
 
 Install for Android via [Play Store](http://android.trustroots.org) or [download APK](http://apk.trustroots.org).
 
-Currently the app merely wraps Trustroots.org site in a `WebView` component.
+Currently the app merely wraps Trustroots.org site in a `WebView` component and provides push notifications.
 
 ## Getting started with development
 
 ### Before you start
-1. You need NPM and Node. Install them. Currently it's recommended to use NPM v3 or v4, because there are still some defects in NPM v5.
-1. Run `npm install` in project directory
+1. You need Node.js installed
+1. Run `npm ci` in project directory
 1. Create settings file: `cp Settings-example.js Settings.js` (and modify contents if needed)
 
 ### Running the app on physical phone
 
 1. [Get an Expo account](https://expo.io/signup). You register from Expo web site or by using command line utility.
 1. Install Expo App to your mobile phone:
-    - [Android](https://play.google.com/store/apps/details?id=host.exp.exponent)
-    - [iOS](https://itunes.apple.com/app/apple-store/id982107779)
-    - or download APK or IPA [via tools page](https://expo.io/tools).
+  - [Android](https://play.google.com/store/apps/details?id=host.exp.exponent)
+  - [iOS](https://itunes.apple.com/app/apple-store/id982107779)
+  - or download APK or IPA [via tools page](https://expo.io/tools).
 
 You have two options for deploying, graphical or command line. Expo XDE might be easier path to get everything up and running.
 
@@ -32,8 +32,8 @@ You have two options for deploying, graphical or command line. Expo XDE might be
 #### Using `exp` commandline utility
 1. Install exp `npm install -g exp`
 1. In project directory:
-    - If your phone is connected via cable: `exp start --android --tunnel`
-    - If your phone is connected to same network as your computer `exp start --android --lan`
+  - If your phone is connected via cable: `exp start --android --tunnel`
+  - If your phone is connected to same network as your computer `exp start --android --lan`
 1. Open mobile app and scan QR code
 
 ### Running in emulator
@@ -54,12 +54,6 @@ To load your local version:
 1. Done! You should now see the page refresh on your phone or emulator if you change any files at the website.
 
 _Note that if you want to use https or different port, you need to configure those from Trustroots's [configuration files](https://github.com/Trustroots/trustroots/tree/master/config/env)._
-
-## Writing code
-
-Lint your code using `npm run lint` (or `npm test`).
-
-You can see exact validation rules from [expo:eslint-config-universe](https://github.com/expo/eslint-config-universe/tree/master/shared), or just try to follow surrounding code. You could also install [Eslint integration](https://eslint.org/docs/user-guide/integrations) in your editor. See also [Editorconfig](http://editorconfig.org/) for your editor.
 
 ## Debugging
 

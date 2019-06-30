@@ -1,4 +1,8 @@
-import { Constants, Permissions, Notifications } from 'expo';
+// External dependencies
+import { Permissions, Notifications } from 'expo';
+import Constants from 'expo-constants';
+
+// Local dependencies
 import * as Settings from '../Settings';
 
 /**

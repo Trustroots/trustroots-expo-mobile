@@ -1,3 +1,4 @@
+// Local dependencies
 import * as Settings from '../Settings';
 import { handleAppUpdateResponse } from './AppUpdate';
 

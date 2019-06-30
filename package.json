@@ -1,27 +1,33 @@
 {
-  "name": "trustroots-app",
-  "version": "1.0.1",
-  "description": "Travellers community for sharing, hosting and getting people together.",
   "author": "https://www.trustroots.org/foundation",
   "repository": {
     "type": "git",
     "url": "https://github.com/Trustroots/trustroots-expo-mobile"
   },
-  "private": true,
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
+    "start": "expo start",
+    "lint": "eslint *.js **/*.js",
     "test": "npm run lint",
-    "lint": "eslint *.js app"
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "eject": "expo eject"
   },
   "dependencies": {
-    "expo": "^28.0.0",
-    "react": "16.3.1",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-28.0.0.tar.gz"
+    "expo": "^33.0.0",
+    "expo-constants": "^5.0.1",
+    "react": "16.8.3",
+    "react-dom": "^16.8.6",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
+    "react-native-web": "^0.11.4"
+  },
+  "devDependencies": {
+    "babel-preset-expo": "^5.1.1",
+    "eslint": "^6.0.1",
+    "eslint-config-expo": "^6.0.0",
+    "prettier": "^1.18.2"
   },
   "license": "MIT",
-  "devDependencies": {
-    "eslint": "~4.9.0",
-    "eslint-config-expo": "~6.0.0",
-    "prettier": "~1.7.4"
-  }
+  "private": true
 }
