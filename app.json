@@ -8,14 +8,10 @@
     "githubUrl": "https://github.com/Trustroots/trustroots-expo-mobile",
     "privacy": "public",
     "sdkVersion": "33.0.0",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
+    "platforms": [ "ios", "android" ],
     "orientation": "portrait",
     "primaryColor": "#12b591",
-    "icon": "./assets/icon_app.png",
+    "icon": "./assets/icon-1024.png",
     "updates": {
       "fallbackToCacheTimeout": 0
     },
@@ -47,14 +43,14 @@
     "android": {
       "versionCode": 3,
       "package": "org.trustroots.trustrootsApp",
-      "icon": "./assets/icon_app.png",
+      "icon": "./assets/icon-512.png",
       "permissions": [],
       "playStoreUrl": "https://play.google.com/store/apps/details?id=org.trustroots.trustrootsApp"
     },
     "ios": {
       "bundleIdentifier": "org.trustroots.trustrootsApp",
       "supportsTablet": true,
-      "icon": "./assets/icon_app.png"
+      "icon": "./assets/icon-1024.png"
     }
   }
 }

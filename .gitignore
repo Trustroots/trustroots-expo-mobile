@@ -9,6 +9,7 @@ npm-debug.*
 web-build/
 web-report/
 *.log
+.DS_Store
 
 # Configs
 Settings.js
