@@ -31,52 +31,55 @@ import { sendStat } from './app/Stats';
 import * as Settings from './Settings';
 
 /**
- * Common component styles
- */
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#12b591',
-  },
-  statusBar: {
-    backgroundColor: '#000000',
-  },
-});
-
-/**
- * App & device information.
- *
- * This should contain only data which doesn't reveal user identity as it's
- * passed on without user being authenticated.
- *
- * See Expo constants:
- * @link https://docs.expo.io/versions/latest/sdk/constants.html
- */
-const appInfo = {
-  version: Constants.manifest.version || '0.0.0',
-  expoVersion: Constants.expoVersion || '',
-  deviceName: Constants.deviceName || '',
-  deviceYearClass: Constants.deviceYearClass || '',
-  os: Platform.OS || '',
-};
-
-// True when during this app runtime notifications are enabled already,
-// so that we don't attempt to enable them again.
-let notificationsRegistered = false;
-let notificationsRegisteringLoading = false;
-
-// JS injected to `WebView`
-// Embedded website will change its functionality based on this.
-const appInfoJavaScript = 'window.trMobileApp=' + JSON.stringify(appInfo) + ';';
-
-/**
  * App's main (and only!) component
  */
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { url: `${Settings.BASE_URL}/?app` };
+    this.state = {
+      // True when during this app runtime notifications are enabled already,
+      // so that we don't attempt to enable them again.
+      notificationsRegistered: false,
+      notificationsRegisteringLoading: false,
+    };
   }
+
+  /**
+   * App & device information.
+   *
+   * This should contain only data which doesn't reveal user identity as it's
+   * passed on without user being authenticated.
+   *
+   * See Expo constants:
+   * @link https://docs.expo.io/versions/latest/sdk/constants.html
+   */
+  appInfo = {
+    version: Constants.manifest.version || '0.0.0',
+    expoVersion: Constants.expoVersion || '',
+    deviceName: Constants.deviceName || '',
+    deviceYearClass: Constants.deviceYearClass || '',
+    os: Platform.OS || '',
+  };
+
+  webViewUrl = `${Settings.BASE_URL}/?app`;
+
+  // Common component styles
+  styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: '#12b591',
+    },
+    statusBar: {
+      backgroundColor: '#000000',
+    },
+    webView: {
+      marginTop: this.appInfo.os === 'ios' ? parseInt(Constants.statusBarHeight || 20, 10) : 0,
+    },
+  });
+
+  // JS injected to `WebView`
+  // Embedded website will change its functionality based on this.
+  appInfoJavaScript = 'window.trMobileApp=' + JSON.stringify(this.appInfo) + ';';
 
   componentWillMount() {
     // Subscribe to push notifications
@@ -87,7 +90,7 @@ export default class App extends React.Component {
 
     // Send anonymous platform stats via API
     // See app/Stats.js for more
-    sendStat('mobileAppInit', appInfo);
+    sendStat('mobileAppInit', this.appInfo);
   }
 
   componentDidMount() {
@@ -147,7 +150,7 @@ export default class App extends React.Component {
    */
   _handleNotification = notification => {
     if (notification.origin === 'selected') {
-      this.setState({ url: notification.data.url || this.state.url });
+      this.setState({ url: notification.data.url || this.webViewUrl });
     }
   };
 
@@ -157,25 +160,28 @@ export default class App extends React.Component {
   async _registerNotifications() {
     console.log('registerNotifications');
     // Do not register multiple times during the app runtime
-    if (notificationsRegistered || notificationsRegisteringLoading) {
+    if (this.state.notificationsRegistered || this.state.notificationsRegisteringLoading) {
       return;
     }
 
-    notificationsRegisteringLoading = true;
+    this.setState({ notificationsRegisteringLoading: true });
 
-    var token = await registerDeviceToExpo();
+    const token = await registerDeviceToExpo();
 
     await registerExpoTokenToTrustroots(token)
       .then(() => {
-        notificationsRegisteringLoading = false;
-        notificationsRegistered = true;
-        console.log('Successfully registered push notifications token.');
+        console.log('Successfully registered push notification token.');
+        this.setState({
+          notificationsRegisteringLoading: false,
+          notificationsRegistered: true,
+        });
       })
-      .catch(err => {
-        notificationsRegisteringLoading = false;
-        notificationsRegistered = false;
-        console.log('Failed to register push notifications token:');
-        console.log(err);
+      .catch(error => {
+        console.log('Failed to register push notification token:', error);
+        this.setState({
+          notificationsRegisteringLoading: false,
+          notificationsRegistered: false,
+        });
       });
   }
 
@@ -184,38 +190,42 @@ export default class App extends React.Component {
    */
   async _unRegisterNotifications() {
     console.log('unRegisterNotifications');
-    notificationsRegisteringLoading = true;
-    await unRegisterExpoTokenFromTrustroots()
-      .then(() => {
-        notificationsRegisteringLoading = false;
-        notificationsRegistered = false;
-      })
-      .catch(() => {
-        notificationsRegisteringLoading = false;
-        notificationsRegistered = true;
-      });
+    this.setState({ notificationsRegisteringLoading: true }, async () => {
+      await unRegisterExpoTokenFromTrustroots()
+        .then(() => {
+          console.log('Successfully unregistered push notification token.');
+          this.setState({
+            notificationsRegisteringLoading: false,
+            notificationsRegistered: false,
+          });
+        })
+        .catch(error => {
+          console.log('Failed to unregister push notification token:', error);
+          this.setState({
+            notificationsRegisteringLoading: false,
+            notificationsRegistered: true,
+          });
+        });
+    });
   }
 
   /**
    * Handle messages sent from WebView
    */
   _handleMessage = event => {
-    console.log('handleMessage: ', event.nativeEvent.data);
-
+    console.log('Handling incoming message:', event.nativeEvent.data);
     let data;
 
     try {
-      console.log('Parsed incoming message.');
       data = JSON.parse(event.nativeEvent.data);
-      console.log(data);
+      console.log('Parsed incoming message:', data);
       // Action is required
       if (!data.action || typeof data.action !== 'string') {
         console.log('Incoming message missing `action`.');
         return;
       }
-    } catch (err) {
-      console.log('Failed to parse incoming message.');
-      console.log(err);
+    } catch (error) {
+      console.log('Failed to parse incoming message:', error);
       return;
     }
 
@@ -255,8 +265,8 @@ export default class App extends React.Component {
 
   _openUrl = url => {
     console.log('openUrl: ', String(url));
-    Linking.openURL(String(url)).catch(err => {
-      console.log('Opening URL failed: ', err);
+    Linking.openURL(String(url)).catch(error => {
+      console.log('Opening URL failed: ', error);
     });
   };
 
@@ -273,12 +283,13 @@ export default class App extends React.Component {
         if (window.user && window.user._id && typeof window.postMessage === 'function') {
           window.postMessage('{ "action": "authenticated" }');
         }
-      ` + appInfoJavaScript
+        ${this.appInfoJavaScript}
+      `
     );
   };
 
-  _handleError = err => {
-    console.log('handleError: ', err);
+  _handleError = error => {
+    console.log('Handle WebView error: ', error);
     // Works on both iOS and Android
     Alert.alert(
       'App failed to load resources',
@@ -286,7 +297,7 @@ export default class App extends React.Component {
       [
         {
           text: 'OK',
-          onPress: () => console.log('Handle error: OK'),
+          onPress: () => {},
           style: 'cancel',
         },
       ],
@@ -296,16 +307,17 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <StatusBar backgroundColor={styles.statusBar.backgroundColor} barStyle="default" />
+      <View style={this.styles.container}>
+        <StatusBar backgroundColor={this.styles.statusBar.backgroundColor} barStyle="default" />
         <WebView
           domStorageEnabled
-          ref={o => (this.webView = o)}
-          source={{ uri: this.state.url }}
-          injectedJavaScript={appInfoJavaScript}
-          onMessage={this._handleMessage}
+          injectedJavaScript={this.appInfoJavaScript}
           onError={this._handleError}
           onLoadEnd={this._handleLoadEnd}
+          onMessage={this.appInfo.os === 'ios' ? null : this._handleMessage}
+          ref={o => (this.webView = o)}
+          source={{ uri: this.webViewUrl }}
+          style={this.styles.webView}
         />
       </View>
     );
