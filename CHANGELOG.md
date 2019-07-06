@@ -2,7 +2,7 @@
 
 You can check [Google Play store listing](https://play.google.com/store/apps/details?id=org.trustroots.trustrootsApp) or [Apple Store listing](#) for the change log as well.
 
-#### 1.2.0
+#### 1.2.0 (6 July 2019)
 - Upgraded the cross platform application to work in Apple iOS devices!
 
 #### 1.1.0 (30 June 2019)
