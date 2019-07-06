@@ -10,8 +10,10 @@ Currently the app merely wraps Trustroots.org site in a `WebView` component and 
 
 ### Before you start
 1. You need Node.js installed
+1. Install Expo CLI `npm install -g expo`
 1. Run `npm ci` in project directory
 1. Create settings file: `cp Settings-example.js Settings.js` (and modify contents if needed)
+1. Start the application by running `npm start`
 
 ### Running the app on physical phone
 
@@ -21,25 +23,12 @@ Currently the app merely wraps Trustroots.org site in a `WebView` component and 
   - [iOS](https://itunes.apple.com/app/apple-store/id982107779)
   - or download APK or IPA [via tools page](https://expo.io/tools).
 
-You have two options for deploying, graphical or command line. Expo XDE might be easier path to get everything up and running.
-
-#### Using Expo XDE graphical app
-
-1. Install [Expo XDE](https://expo.io/tools) to your development machine (supports Windows/OSX/Linux).
-1. Open App in Expo XDE. It should start compiling it.
-1. Connect your mobile phone to development server. In XDE there is share button when you click it you should see QR code you can scan with Expo App. Command line utility prints QR code to console.
-
-#### Using `exp` commandline utility
-1. Install exp `npm install -g exp`
-1. In project directory:
-  - If your phone is connected via cable: `exp start --android --tunnel`
-  - If your phone is connected to same network as your computer `exp start --android --lan`
-1. Open mobile app and scan QR code
-
 ### Running in emulator
 If you prefer emulator instead of using physical phone check out [instructions form Expo site](https://docs.expo.io/versions/latest/introduction/installation.html#mobile-client-expo-for-ios-and-android).
 
 Note that emulator cannot process push notifications.
+
+Type `expo ios` or `expo android` to open the application in emulators.
 
 ## Running local development version of the site inside the app
 
