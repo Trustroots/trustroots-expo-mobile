@@ -11,7 +11,7 @@
     "platforms": [ "ios", "android" ],
     "orientation": "portrait",
     "primaryColor": "#12b591",
-    "icon": "./assets/icon-1024.png",
+    "icon": "assets/icon-1024.png",
     "updates": {
       "fallbackToCacheTimeout": 0
     },
@@ -19,17 +19,17 @@
       "**/*"
     ],
     "loading": {
-      "icon": "./assets/loading.png",
+      "icon": "assets/loading.png",
       "backgroundColor": "#12b591",
       "hideExponentText": true
     },
     "splash": {
       "backgroundColor": "#12b591",
-      "image": "./assets/splash.png",
+      "image": "assets/splash.png",
       "resizeMode": "contain"
     },
     "notification": {
-      "icon": "./assets/icon_push.png",
+      "icon": "assets/icon_push.png",
       "color": "#12b591",
       "androidMode": "default"
     },
@@ -43,14 +43,14 @@
     "android": {
       "versionCode": 3,
       "package": "org.trustroots.trustrootsApp",
-      "icon": "./assets/icon-512.png",
+      "icon": "assets/icon-512.png",
       "permissions": [],
       "playStoreUrl": "https://play.google.com/store/apps/details?id=org.trustroots.trustrootsApp"
     },
     "ios": {
       "bundleIdentifier": "org.trustroots.trustrootsApp",
       "supportsTablet": true,
-      "icon": "./assets/icon-1024.png"
+      "icon": "assets/icon-1024.png"
     }
   }
 }
