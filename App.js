@@ -70,8 +70,26 @@ export default class App extends React.Component {
   });
 
   // JS injected to `WebView`
-  // Embedded website will change its functionality based on this.
-  appInfoJavaScript = 'window.trMobileApp=' + JSON.stringify(this.appInfo) + ';';
+  injectedJavaScript = `
+    function postMessage(message) {
+      if (window.ReactNativeWebView && typeof window.ReactNativeWebView.postMessage == 'function') {
+        window.ReactNativeWebView.postMessage(JSON.stringify(message));
+      } else {
+        console.error("'window.ReactNativeWebView.postMessage' is not a function");
+      }
+    }
+
+    // This is needed because we want to subscribe notifications only
+    // if user is authenticated window.ReactNativeWebView.postMessage
+    // accepts one argument, data, which will be available on the event
+    // object, event.nativeEvent.data. data must be a string.
+    if (window.user && window.user._id) {
+      postMessage({ "action": "authenticated" });
+    }
+
+    // Embedded website will change its functionality based on this.
+    window.trMobileApp = ${JSON.stringify(this.appInfo)};
+  `;
 
   componentWillMount() {
     // Subscribe to push notifications
@@ -266,18 +284,7 @@ export default class App extends React.Component {
   // I.e. on each URL change
   _handleLoadEnd = () => {
     console.log('handleLoadEnd');
-    this.webView.injectJavaScript(
-      //   This is needed because we want to subscribe notifications only
-      //   if user is authenticated window.ReactNativeWebView.postMessage
-      //   accepts one argument, data, which will be available on the event
-      //   object, event.nativeEvent.data. data must be a string.
-      `
-        if (window.user && window.user._id && typeof window.ReactNativeWebView.postMessage === 'function') {
-          window.ReactNativeWebView.postMessage('{ "action": "authenticated" }');
-        }
-        ${this.appInfoJavaScript}
-      `
-    );
+    this.webView.injectJavaScript(this.injectedJavaScript);
   };
 
   _handleError = error => {
@@ -303,7 +310,7 @@ export default class App extends React.Component {
         <StatusBar backgroundColor={this.styles.statusBar.backgroundColor} barStyle="default" />
         <WebView
           domStorageEnabled
-          injectedJavaScript={this.appInfoJavaScript}
+          injectedJavaScript={this.injectedJavaScript}
           onError={this._handleError}
           onLoadEnd={this._handleLoadEnd}
           onMessage={this.appInfo.os === 'ios' ? null : this._handleMessage}
