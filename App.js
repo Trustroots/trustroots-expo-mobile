@@ -89,6 +89,22 @@ export default class App extends React.Component {
 
     // Embedded website will change its functionality based on this.
     window.trMobileApp = ${JSON.stringify(this.appInfo)};
+
+    // Open external websites in browser, not WebView
+    Array.from(document.querySelectorAll("a[href]")).forEach(link => {
+      if (link.origin === "${Settings.BASE_URL}") {
+        // Don't alter links on the Trustroots website
+        return;
+      }
+
+      link.addEventListener("click", event => {
+        // Prevent opening link in current WebView
+        event.preventDefault();
+
+        // Message React Native, where we open it externally
+        postMessage({ action: "openUrl", url: link.href });
+      });
+    });
   `;
 
   componentWillMount() {
