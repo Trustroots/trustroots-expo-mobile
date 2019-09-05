@@ -8,16 +8,8 @@
 
 // External dependencies
 import React from 'react';
-import {
-  Alert,
-  BackHandler,
-  Linking,
-  Platform,
-  StatusBar,
-  StyleSheet,
-  View,
-  WebView,
-} from 'react-native';
+import { Alert, BackHandler, Linking, Platform, StatusBar, StyleSheet, View } from 'react-native';
+import { WebView } from 'react-native-webview';
 import Constants from 'expo-constants';
 import { Notifications } from 'expo';
 
@@ -276,12 +268,12 @@ export default class App extends React.Component {
     console.log('handleLoadEnd');
     this.webView.injectJavaScript(
       //   This is needed because we want to subscribe notifications only
-      //   if user is authenticated window.postMessage accepts one
-      //   argument, data, which will be available on the event object,
-      //   event.nativeEvent.data. data must be a string.
+      //   if user is authenticated window.ReactNativeWebView.postMessage
+      //   accepts one argument, data, which will be available on the event
+      //   object, event.nativeEvent.data. data must be a string.
       `
-        if (window.user && window.user._id && typeof window.postMessage === 'function') {
-          window.postMessage('{ "action": "authenticated" }');
+        if (window.user && window.user._id && typeof window.ReactNativeWebView.postMessage === 'function') {
+          window.ReactNativeWebView.postMessage('{ "action": "authenticated" }');
         }
         ${this.appInfoJavaScript}
       `
