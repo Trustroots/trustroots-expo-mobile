@@ -73,7 +73,7 @@ export default class App extends React.Component {
   // Embedded website will change its functionality based on this.
   appInfoJavaScript = 'window.trMobileApp=' + JSON.stringify(this.appInfo) + ';';
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     // Subscribe to push notifications
     this._notificationSubscription = Notifications.addListener(this._handleNotification);
 

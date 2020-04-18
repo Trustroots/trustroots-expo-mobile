@@ -7,8 +7,11 @@
     "description": "Travellers community for sharing, hosting and getting people together.",
     "githubUrl": "https://github.com/Trustroots/trustroots-expo-mobile",
     "privacy": "public",
-    "sdkVersion": "33.0.0",
-    "platforms": [ "ios", "android" ],
+    "sdkVersion": "37.0.0",
+    "platforms": [
+      "ios",
+      "android"
+    ],
     "orientation": "portrait",
     "primaryColor": "#12b591",
     "icon": "assets/icon-1024.png",
@@ -34,7 +37,10 @@
       "androidMode": "default"
     },
     "packagerOpts": {
-      "assetExts": ["ttf", "mp4"]
+      "assetExts": [
+        "ttf",
+        "mp4"
+      ]
     },
     "androidStatusBar": {
       "barStyle": "light-content",
