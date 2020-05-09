@@ -54,6 +54,7 @@
       "playStoreUrl": "https://play.google.com/store/apps/details?id=org.trustroots.trustrootsApp"
     },
     "ios": {
+      "buildNumber": "5",
       "bundleIdentifier": "org.trustroots.trustrootsApp",
       "supportsTablet": true,
       "icon": "assets/icon-1024.png"
