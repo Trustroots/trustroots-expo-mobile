@@ -10,7 +10,7 @@ Currently the app merely wraps Trustroots.org site in a `WebView` component and 
 
 ### Before you start
 1. You need Node.js installed
-1. Install Expo CLI `npm install -g expo`
+1. Install Expo CLI `npm install expo-cli --global`
 1. Run `npm ci` in project directory
 1. Create settings file: `cp Settings-example.js Settings.js` (and modify contents if needed)
 1. Start the application by running `npm start`
@@ -28,7 +28,7 @@ If you prefer emulator instead of using physical phone check out [instructions f
 
 Note that emulator cannot process push notifications.
 
-Type `expo ios` or `expo android` to open the application in emulators.
+Type `expo start --ios` or `expo start --android` to open the application in emulators.
 
 ## Running local development version of the site inside the app
 

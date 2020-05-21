@@ -19,6 +19,7 @@ import {
   registerExpoTokenToTrustroots,
   unRegisterExpoTokenFromTrustroots,
 } from './app/Notifications';
+import { requirePermission } from './app/Permissions';
 import { sendStat } from './app/Stats';
 import * as Settings from './Settings';
 
@@ -87,6 +88,7 @@ export default class App extends React.Component {
 
   componentDidMount() {
     this._initAppConnectInterval();
+    requirePermission();
   }
 
   componentWillUnmount() {
