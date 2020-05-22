@@ -22,7 +22,9 @@
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-37.0.1.tar.gz",
     "react-native-web": "^0.11.7",
-    "react-native-webview": "8.1.1"
+    "react-native-webview": "8.1.1",
+    "expo-camera": "~8.2.0",
+    "expo-image-picker": "~8.1.0"
   },
   "devDependencies": {
     "babel-preset-expo": "^8.2.1",
