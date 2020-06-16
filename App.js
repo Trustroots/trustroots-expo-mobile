@@ -8,7 +8,17 @@
 
 // External dependencies
 import React from 'react';
-import { Alert, BackHandler, Linking, Platform, StatusBar, StyleSheet, View } from 'react-native';
+import {
+  Alert,
+  BackHandler,
+  Linking,
+  Platform,
+  StatusBar,
+  StyleSheet,
+  View,
+  KeyboardAvoidingView,
+  Platform,
+} from 'react-native';
 import { WebView } from 'react-native-webview';
 import Constants from 'expo-constants';
 import { Notifications } from 'expo';
@@ -65,6 +75,7 @@ export default class App extends React.Component {
       backgroundColor: '#000000',
     },
     webView: {
+      flex: 1,
       marginTop: this.appInfo.os === 'ios' ? parseInt(Constants.statusBarHeight || 20, 10) : 0,
     },
   });
@@ -298,8 +309,9 @@ export default class App extends React.Component {
   };
 
   render() {
+    const Container = Platform.OS === 'android' ? KeyboardAvoidingView : View;
     return (
-      <View style={this.styles.container}>
+      <Container style={this.styles.container}>
         <StatusBar backgroundColor={this.styles.statusBar.backgroundColor} barStyle="default" />
         <WebView
           domStorageEnabled
@@ -311,7 +323,7 @@ export default class App extends React.Component {
           source={{ uri: this.webViewUrl }}
           style={this.styles.webView}
         />
-      </View>
+      </Container>
     );
   }
 }
