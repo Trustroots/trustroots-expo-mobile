@@ -2,7 +2,7 @@
 
 You can check [Google Play store listing](https://play.google.com/store/apps/details?id=org.trustroots.trustrootsApp) or [Apple Store listing](#) for the change log as well.
 
-#### 1.3.0 (21 July 2020)
+#### 1.3.0 (21 June 2020)
 - Fix: Keyboard won't cover message input anymore
 - Fix: uploading profile images now works
 - Updated framework dependencies
