@@ -16,14 +16,15 @@
   },
   "dependencies": {
     "expo": "^37.0.12",
+    "expo-camera": "~8.2.0",
     "expo-constants": "~9.0.0",
+    "expo-image-picker": "~8.1.0",
+    "expo-linking": "~1.0.1",
     "expo-permissions": "~8.1.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-37.0.1.tar.gz",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-37.0.12.tar.gz",
     "react-native-web": "^0.12.3",
-    "expo-camera": "~8.2.0",
-    "expo-image-picker": "~8.1.0"
     "react-native-webview": "8.1.1"
   },
   "devDependencies": {

@@ -12,12 +12,12 @@ import {
   Alert,
   BackHandler,
   KeyboardAvoidingView,
-  Linking,
   Platform,
   StatusBar,
   StyleSheet,
   View,
 } from 'react-native';
+import * as Linking from 'expo-linking';
 import { WebView } from 'react-native-webview';
 import Constants from 'expo-constants';
 import { Notifications } from 'expo';
