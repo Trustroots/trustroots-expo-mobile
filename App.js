@@ -11,13 +11,12 @@ import React from 'react';
 import {
   Alert,
   BackHandler,
+  KeyboardAvoidingView,
   Linking,
   Platform,
   StatusBar,
   StyleSheet,
   View,
-  KeyboardAvoidingView,
-  Platform,
 } from 'react-native';
 import { WebView } from 'react-native-webview';
 import Constants from 'expo-constants';
