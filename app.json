@@ -7,7 +7,6 @@
     "description": "Travellers community for sharing, hosting and getting people together.",
     "githubUrl": "https://github.com/Trustroots/trustroots-expo-mobile",
     "privacy": "public",
-    "sdkVersion": "37.0.0",
     "platforms": [
       "ios",
       "android"
