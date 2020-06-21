@@ -50,7 +50,10 @@
       "versionCode": 3,
       "package": "org.trustroots.trustrootsApp",
       "icon": "assets/icon-512.png",
-      "permissions": [],
+      "permissions": [
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE"
+      ],
       "playStoreUrl": "https://play.google.com/store/apps/details?id=org.trustroots.trustrootsApp"
     },
     "ios": {

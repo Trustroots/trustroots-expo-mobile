@@ -1,5 +1,6 @@
 // External dependencies
-import { Permissions, Notifications } from 'expo';
+import { Notifications } from 'expo';
+import * as Permissions from 'expo-permissions';
 import Constants from 'expo-constants';
 
 // Local dependencies
@@ -26,7 +27,9 @@ export async function registerDeviceToExpo() {
     return;
   }
 
-  return await Notifications.getExpoPushTokenAsync();
+  return await Notifications.getExpoPushTokenAsync().catch((error) => {
+    console.error('Failed to get push notification token:', error);
+  });
 }
 
 /**
