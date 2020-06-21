@@ -55,7 +55,7 @@ export async function registerExpoTokenToTrustroots(token) {
         doNotNotify: true,
         deviceId: Constants.deviceId || '',
       }),
-    }).then(response => {
+    }).then((response) => {
       console.log('fetch response: ', response);
       if (!response.ok) {
         return reject(new Error('Failed to register token with API.'));
@@ -75,7 +75,7 @@ export async function unRegisterExpoTokenFromTrustroots() {
   console.log('->unRegisterExpoTokenFromTrustroots');
 
   return new Promise((resolve, reject) => {
-    Notifications.getExpoPushTokenAsync().then(token => {
+    Notifications.getExpoPushTokenAsync().then((token) => {
       if (!token) {
         console.log('No token to unregister.');
         return;
@@ -87,7 +87,7 @@ export async function unRegisterExpoTokenFromTrustroots() {
           Accept: 'application/json',
           'Content-Type': 'application/json',
         },
-      }).then(response => {
+      }).then((response) => {
         console.log('unRegisterExpoTokenFromTrustroots fetch response: ', response);
         if (!response.ok) {
           return reject(new Error('Failed to unregister token with API.'));

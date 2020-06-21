@@ -152,7 +152,7 @@ export default class App extends React.Component {
   /**
    * Handle tapping on incoming push notifications
    */
-  _handleNotification = notification => {
+  _handleNotification = (notification) => {
     if (notification.origin === 'selected') {
       this.setState({ url: notification.data.url || this.webViewUrl });
     }
@@ -180,7 +180,7 @@ export default class App extends React.Component {
           notificationsRegistered: true,
         });
       })
-      .catch(error => {
+      .catch((error) => {
         console.log('Failed to register push notification token:', error);
         this.setState({
           notificationsRegisteringLoading: false,
@@ -203,7 +203,7 @@ export default class App extends React.Component {
             notificationsRegistered: false,
           });
         })
-        .catch(error => {
+        .catch((error) => {
           console.log('Failed to unregister push notification token:', error);
           this.setState({
             notificationsRegisteringLoading: false,
@@ -216,7 +216,7 @@ export default class App extends React.Component {
   /**
    * Handle messages sent from WebView
    */
-  _handleMessage = event => {
+  _handleMessage = (event) => {
     console.log('Handling incoming message:', event.nativeEvent.data);
     let data;
 
@@ -267,9 +267,9 @@ export default class App extends React.Component {
     console.log('Unrecognized `action` string in message.');
   };
 
-  _openUrl = url => {
+  _openUrl = (url) => {
     console.log('openUrl: ', String(url));
-    Linking.openURL(String(url)).catch(error => {
+    Linking.openURL(String(url)).catch((error) => {
       console.log('Opening URL failed: ', error);
     });
   };
@@ -292,7 +292,7 @@ export default class App extends React.Component {
     );
   };
 
-  _handleError = error => {
+  _handleError = (error) => {
     console.log('Handle WebView error: ', error);
     // Works on both iOS and Android
     Alert.alert(
@@ -320,7 +320,7 @@ export default class App extends React.Component {
           onError={this._handleError}
           onLoadEnd={this._handleLoadEnd}
           onMessage={this.appInfo.os === 'ios' ? null : this._handleMessage}
-          ref={o => (this.webView = o)}
+          ref={(o) => (this.webView = o)}
           source={{ uri: this.webViewUrl }}
           style={this.styles.webView}
         />

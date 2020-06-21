@@ -26,7 +26,7 @@ export async function sendStat(collection, stats) {
       collection: String(collection),
       stats,
     }),
-  }).then(response => {
+  }).then((response) => {
     // If stats API responds "needs update" headers,
     // tell user to update the app.
     handleAppUpdateResponse(response);

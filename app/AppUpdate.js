@@ -40,7 +40,7 @@ export function handleAppUpdateResponse(fetchResponse) {
           const appStoreUrl =
             'https://play.google.com/store/apps/details?id=org.trustroots.trustrootsApp';
 
-          Linking.openURL(appStoreUrl).catch(err => {
+          Linking.openURL(appStoreUrl).catch((err) => {
             console.error('Opening Play Store URL failed: ', err);
           });
         },
